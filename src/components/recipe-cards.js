@@ -84,14 +84,11 @@ class Recipe extends React.Component {
         //     );
         // }
         return(<div>
-            {renderList()}
-            {/* {this.state.recipe.map(recipe => {
-                return <div>{recipe.name }</div>
-            })} */}
-        
-            
-            
-            
+            <div className="container">
+                <div className="row">
+                        {renderList()}
+                </div>
+            </div>
         </div>)
     }
 
