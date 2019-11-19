@@ -3,11 +3,15 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Recipe from './components/recipe-cards'
+import NavBar from './components/navbar'
+import Carousel from './components/carousel'
 
 function App() {
   return (
     <div className="App">
-     <Recipe />
+      <NavBar />
+      <Carousel />
+      {/* <Recipe /> */}
     </div>
   );
 }
