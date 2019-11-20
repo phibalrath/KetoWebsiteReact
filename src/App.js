@@ -11,7 +11,8 @@ function App() {
     <div className="App">
       <NavBar />
       <Carousel />
-      {/* <Recipe /> */}
+      <br />
+      <Recipe />
     </div>
   );
 }

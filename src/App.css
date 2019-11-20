@@ -21,6 +21,49 @@
   color: #09d3ac;
 }
 
+#jumboImageOne, #jumboImageTwo, #jumboImageThree {
+  height: 750px;
+}
+
+.navbar {
+  background-color: #3CB371;
+}
+
+.nav-link, .navbar-brand {
+  color: white;
+}
+
+#jumboImageOne {
+  background-image: url("https://qph.fs.quoracdn.net/main-qimg-5a75652cef28cfa6a6e85458c91a05f7");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#jumboImageTwo {
+  background-image: url("https://media1.s-nbcnews.com/j/newscms/2018_07/2326091/180212-food-ketogenic-diet-ac-510p_3d626e21916c22a57975e54139fafa68.nbcnews-fp-1200-630.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#jumboImageThree {
+  background-image: url("https://www.gnom-gnom.com/wp-content/uploads/2018/03/Low-Carb-Gluten-Free-Keto-Double-Chocolate-Chip-Cookies-by-Gnom-Gnom-7.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
+
+.display-4, .lead {
+  color: white;
+}
+
+#center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+}
+
+
+
+
 
 
 

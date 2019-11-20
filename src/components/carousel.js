@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 class Carousel extends React.Component {
 
     render() {
@@ -13,29 +12,51 @@ class Carousel extends React.Component {
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                     <div class="carousel-inner">
+                        
                         <div class="carousel-item active">
-                             <div class="jumbotron jumbotron-fluid">
-                                <div class="container">
-                                 <h1 class="display-4">Fluid jumbotron</h1>
-                                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                             <div id = "jumboImageOne" class="jumbotron jumbotron-fluid">
+                                <div id = "jumbotronContainerOne" class="container">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h1 class="display-4">See it...</h1>
+                                            <h1 class="display-4">Imagine it...</h1>
+                                            <h1 class="display-4">Taste it...</h1>
+                                            <br />
+                                             <p class="lead">Welcome to KETO Plan! We are excited to help you plan your daily Keto Meals. </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                        
                         <div class="carousel-item">
-                            <div class="jumbotron jumbotron-fluid">
+                            <div id = "jumboImageTwo" class="jumbotron jumbotron-fluid">
                                 <div class="container">
-                                    <h1 class="display-4">Slide 2</h1>
-                                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    <div class="row">
+                                        <div class="col-md-8">
+
+                                        </div>
+                                        <div id="center-right" class="col-md-4">
+                                             <h1 class="display-4">Why Keto?</h1>
+                                             <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                        </div>
+                                    </div>
                                 </div>
                              </div>
                         </div>
                     
                         <div class="carousel-item">
-                            <div class="jumbotron jumbotron-fluid">
+                            <div id="jumboImageThree" class="jumbotron jumbotron-fluid">
                                 <div class="container">
-                                <h1 class="display-4">Slide 3</h1>
-                                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                                    <div id="center" class="row">
+                                        <div class="col-md-12">
+                                <h1 class="display-4">Be Creative...</h1>
+                                <p class="lead">Just because you're going Keto doesn't mean that you lose your dessert! There's a variety of Keto friendly snacks and desserts available!</p>
+                                <div class="lead">
+                                    <a href="#" className="btn btn-primary">Find Recipes</a>
+                                </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
