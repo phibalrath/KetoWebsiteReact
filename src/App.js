@@ -6,6 +6,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Recipe from './components/recipe-cards'
 import NavBar from './components/navbar'
 import Carousel from './components/carousel'
+import HomePage from './components/homepage'
 
 const homePage = () => {
   return (
@@ -18,6 +19,7 @@ const homePage = () => {
           </div>
           <div className="col-md-8"> */}
             <Carousel />
+            <HomePage />
           {/* </div>
         </div>
       </div> */}
