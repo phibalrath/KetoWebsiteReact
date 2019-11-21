@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class NavBar extends React.Component {
 
@@ -7,7 +8,9 @@ class NavBar extends React.Component {
         return (
             <div>
                 <nav class="navbar navbar-expand-lg" >
-                    <a class="navbar-brand" href="#">KETO Planner</a>
+                    <a class="navbar-brand">
+                        <Link to="/">KETO Planner</Link>
+                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -18,7 +21,9 @@ class NavBar extends React.Component {
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                          </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Recipes</a>
+                            <a class="nav-link">
+                                <Link to="/recipes">Recipes</Link>
+                            </a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
