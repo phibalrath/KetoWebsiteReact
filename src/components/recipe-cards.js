@@ -20,6 +20,7 @@ class Recipe extends React.Component {
         console.log(this.state.recipe)
     }
 
+
     // componentDidMount() {
     //     console.log("did mount")
     //     fetch("http://localhost:8080/api/recipe/all")
@@ -52,43 +53,94 @@ class Recipe extends React.Component {
         //Each time you map the array, it will create a new instance of the card and pass on the objects in the array as props
         const renderList = () => {
             return this.state.recipe.map((recipe) => {
-                // return <div key={recipe.id}>
-                //     <li>{recipe.id}</li>
-                //     {/* <li>{recipe.name}</li> */}
-                //     {/* <li>{recipe.cookTime}</li> */}
-                //     </div>
-
-
                 return <RecipeCardChild recipe = {recipe}/>
             })
         }
 
-        // const {error, isLoaded, recipe } = this.state;
-        // if(error) {
-        //     return <div>Error: {error.message}</div>;
-        // // // } else if (!isLoaded) {
-        // // //     return <div>Loading...</div>;
-        // // } else {
-        //     return (
-        //         <ul>
-        //             {/* {recipe.map(recipes => (
-        //                 <li key={recipes.id}>
-        //                     {recipes.name} 
-        //                     {recipes.numberOfIngredients} 
-        //                     {recipes.cookTime} 
-        //                     {recipes.carbs} 
-        //                     {recipes.images}
-        //                 </li>
-        //             ))} */}
-        //         </ul>
-        //     );
-        // }
+        const onAllFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
+        //Change State to Dinner and automatically re-render component
+        const onDinnerFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all/dinner");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
+        const onLunchFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all/lunch");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
+        const onSnackFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all/snack");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
+        const onSideFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all/sides");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
+
+
+        const onSortByCookTime = () => {
+            //LOGIC to sort
+            let cookTime = this.state.recipe.sort(()=> {})
+            this.setState({
+                //cookTime is an ordered array
+                recipe: cookTime
+            })
+        }
+
         return(<div>
-            <div className="container">
+          
                 <div className="row">
-                        {renderList()}
+                    <div className="col-md-3">
+                        <h2>Filter By:</h2>
+                        
+                        <button onClick={onAllFilter}>
+                            All Recipes
+                        </button>
+                         {/* On-Click that will call a method that will update state and react will re-render to your Sort By specification */}
+                        <button onClick={onDinnerFilter}>
+                            Dinner
+                        </button>
+                        <button onClick={onLunchFilter}>
+                            Lunch
+                        </button>
+                        <button onClick={onSnackFilter}>
+                            Snack
+                        </button>
+                        <button onClick={onSideFilter}>
+                            Sides
+                        </button>
+                    </div>
+                    <div className="col-md-9">
+                        <div className="row">
+                            {renderList()}
+                        </div>
+                    </div>
                 </div>
-            </div>
+          
+           
+            
         </div>)
     }
 

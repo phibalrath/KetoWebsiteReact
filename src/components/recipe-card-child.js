@@ -9,11 +9,13 @@ class RecipeCardChild extends React.Component {
         console.log(this.props);
     }
 
+    
+
     render() {
-        return (<div>
+        return (
         
        
-                <div className="col-sm"  d-flex align-items-stretch>
+              
                     <div className="card" style={{width: 285, height: 450}}>
                         <center><img src= {this.props.recipe.images} style={{width: 285, height: 250}} className="card-img-top" alt="Shirataki Ramen" /></center>
                             <div className="card-body">
@@ -27,9 +29,9 @@ class RecipeCardChild extends React.Component {
                                 <a href="#" className="btn btn-primary">Add to Meal Plan</a>
                             </div>
                     
-             </div>
+         
         </div>
-    </div>)
+    )
     }
 }
 
