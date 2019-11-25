@@ -1,15 +1,17 @@
 import React from 'react';
 import RecipeCardChild from './recipe-card-child'
 
+
 class Recipe extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             error: null,
             recipe: [],
-            isLoaded: false
-        };
-    }
+            isLoaded: false,
+          
+        }
+    };
 
     async componentDidMount () {
         let response = await fetch("http://localhost:8080/api/recipe/all");
@@ -45,6 +47,22 @@ class Recipe extends React.Component {
     // //         }
     // //     )
     // }
+
+    // sortBy(key) {
+    //     this.setState({
+    //         recipe: recipe.sort((a,b) => a > b )
+    //     })
+    // }
+
+    // handleChange(event) {
+    //     this.setState({recipe: event.target.recipe});
+    //   };
+
+    //   handleSubmit(event) {
+    //     alert(this.state.recipe);
+    //     event.preventDefault();
+    //   };
+
 
   
     render() {
@@ -90,6 +108,14 @@ class Recipe extends React.Component {
             })
         }
 
+        const onBreakfastFilter = async () => {
+            let response = await fetch("http://localhost:8080/api/recipe/all/breakfast");
+            let result = await response.json();
+            this.setState({
+                recipe: result
+            })
+        }
+
         const onSideFilter = async () => {
             let response = await fetch("http://localhost:8080/api/recipe/all/sides");
             let result = await response.json();
@@ -98,41 +124,116 @@ class Recipe extends React.Component {
             })
         }
 
+        const {selectedOption} = this.state;
+
 
 
         const onSortByCookTime = () => {
             //LOGIC to sort
-            let cookTime = this.state.recipe.sort(()=> {})
+            let cookTime = this.state.recipe.sort((a, b) => a.cookTime - b.cookTime)
             this.setState({
                 //cookTime is an ordered array
                 recipe: cookTime
             })
         }
 
+        const onSortByCookTimeHigh = () => {
+            //LOGIC to sort
+            let cookTime = this.state.recipe.sort((a, b) => b.cookTime - a.cookTime)
+            this.setState({
+                //cookTime is an ordered array
+                recipe: cookTime
+            })
+        }
+        
+        const onSortByNumOfIngredients = () => {
+            //LOGIC to sort
+            let numOfIngredients = this.state.recipe.sort((a, b) => a.numberOfIngredients - b.numberOfIngredients)
+            this.setState({
+                //cookTime is an ordered array
+                recipe: numOfIngredients
+            })
+        }
+
+        const onSortByNumOfIngredientsHigh = () => {
+            //LOGIC to sort
+            let numOfIngredients = this.state.recipe.sort((a, b) => b.numberOfIngredients - a.numberOfIngredients)
+            this.setState({
+                //cookTime is an ordered array
+                recipe: numOfIngredients
+            })
+        }
+
+        const onSortByNumOfCarbs = () => {
+            //LOGIC to sort
+            let numOfCarbs = this.state.recipe.sort((a, b) => a.carbs - b.carbs)
+            this.setState({
+                //cookTime is an ordered array
+                recipe: numOfCarbs
+            })
+        }
+
+        const onSortByNumOfCarbsHigh = () => {
+            //LOGIC to sort
+            let numOfCarbs = this.state.recipe.sort((a, b) => b.carbs - a.carbs)
+            this.setState({
+                //cookTime is an ordered array
+                recipe: numOfCarbs
+            })
+        }
+
+        
+
         return(<div>
           
                 <div className="row">
                     <div className="col-md-3">
                         <h2>Filter By:</h2>
-                        
-                        <button onClick={onAllFilter}>
-                            All Recipes
-                        </button>
-                         {/* On-Click that will call a method that will update state and react will re-render to your Sort By specification */}
-                        <button onClick={onDinnerFilter}>
-                            Dinner
-                        </button>
-                        <button onClick={onLunchFilter}>
-                            Lunch
-                        </button>
-                        <button onClick={onSnackFilter}>
-                            Snack
-                        </button>
-                        <button onClick={onSideFilter}>
-                            Sides
-                        </button>
+                        {/* On-Click that will call a method that will update state and react will re-render to your Sort By specification */}
+                            <ul id="buttons">
+                                <li>
+                                    <button onClick={onAllFilter} type="button" class="btn btn-outline-success" >
+                                        All Recipes
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={onBreakfastFilter} type="button" class="btn btn-outline-success">
+                                        Breakfast
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={onLunchFilter} type="button" class="btn btn-outline-success">
+                                        Lunch
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={onDinnerFilter} type="button" class="btn btn-outline-success">
+                                        Dinner
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={onSideFilter} type="button" class="btn btn-outline-success">
+                                        Sides
+                                    </button>
+                                </li>
+                                <li>
+                                    <button onClick={onSnackFilter} type="button" class="btn btn-outline-success">
+                                        Snack
+                                    </button>
+                                </li>
+                            </ul>
+
                     </div>
                     <div className="col-md-9">
+                    Sort By:
+                     <button onClick={onSortByCookTime}>CookTime: Low to High</button>
+                     <button onClick={onSortByCookTimeHigh}>CookTime: High to Low</button>
+                     <button onClick={onSortByNumOfIngredients}># of Ingredients: Low to High</button>
+                     <button onClick={onSortByNumOfIngredientsHigh}># of Ingredients: High to Low</button>
+                     <button onClick={onSortByNumOfCarbs}># of Carbs: Low to High</button>
+                     <button onClick={onSortByNumOfCarbsHigh}># of Carbs: High to Low</button>
+                     
+                        
                         <div className="row">
                             {renderList()}
                         </div>

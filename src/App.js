@@ -12,17 +12,8 @@ const homePage = () => {
   return (
     <div>
         <NavBar />
-      {/* <div className = "container">
-        <div className="row">
-          <div className="col-md-4">
-            <p>Where the filter section will be</p>
-          </div>
-          <div className="col-md-8"> */}
-            <Carousel />
-            <HomePage />
-          {/* </div>
-        </div>
-      </div> */}
+        <Carousel />
+        <HomePage />
     </div>
   )
 }
