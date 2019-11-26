@@ -7,6 +7,7 @@ import Recipe from './components/recipe-cards'
 import NavBar from './components/navbar'
 import Carousel from './components/carousel'
 import HomePage from './components/homepage'
+import CRUDSearch from './components/CRUDSearch';
 
 const homePage = () => {
   return (
@@ -26,12 +27,22 @@ const recipePage = () => {
   )
 }
 
+const addRecipe = () => {
+  return (
+    <div>
+      <NavBar />
+      <CRUDSearch />
+    </div>
+  )
+}
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Route path="/" exact component={homePage} />
         <Route path="/recipes" exact component={recipePage} />
+        <Route path="/recipes/add" exact component={addRecipe} />
       </BrowserRouter>
     </div>
   );
