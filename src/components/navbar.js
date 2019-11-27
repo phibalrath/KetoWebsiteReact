@@ -23,6 +23,13 @@ class NavBar extends React.Component {
                                 <Link to="/recipes">Recipes</Link>
                             </a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link">
+                                <Link to="/recipes/add">Add Recipe</Link>
+                            </a>
+                        </li>
+
                         </ul>
 
                         <form class="form-inline my-2 my-lg-0">

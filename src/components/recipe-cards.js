@@ -63,7 +63,9 @@ class Recipe extends React.Component {
     //     event.preventDefault();
     //   };
 
-
+    // onAddToCart(recipe) {
+    //     this.setState()
+    // }
   
     render() {
 
@@ -71,6 +73,8 @@ class Recipe extends React.Component {
         //Each time you map the array, it will create a new instance of the card and pass on the objects in the array as props
         const renderList = () => {
             return this.state.recipe.map((recipe) => {
+                //this is where you pass on props to child
+                //onAddToCart={onAddToCart}
                 return <RecipeCardChild recipe = {recipe}/>
             })
         }

@@ -124,6 +124,55 @@
 }
 
 
+input {
+  width: 70%;
+  outline: none;
+  border: 1px solid #ddd;
+}
+
+.form {
+  overflow: hidden;
+  margin-top: 1em;
+  width: 100%;
+  margin-top: 13%;
+  margin-left: 13%;
+}
+
+input {
+  float: right;
+}
+
+label {
+  float: left;
+  padding: .5em;
+}
+
+.verticalLine {
+  border-left: 6px solid green;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 8em;
+}
+
+.CRUDCard, .h2 {
+  margin-top: 13%;
+}
+
+@media screen and (max-width: 780px) {
+  /* Green Line disappears if smaller than 780px */
+  .verticalLine {
+    display: none;
+  }
+
+  .form {
+    margin: 2em;
+  }
+}
+
+
+
 
 
 

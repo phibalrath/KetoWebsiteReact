@@ -26,7 +26,8 @@ class RecipeCardChild extends React.Component {
                                     {this.props.recipe.carbs} Carbs
                                 </div> 
                              <br />
-                                <a href="#" className="btn btn-primary">Add to Meal Plan</a>
+                                <a href="#" className="btn btn-primary" >Add to Meal Plan</a>
+                                {/* onClick={this.props.onAddToCart(this.props.recipe)} */}
                             </div>
                     
          
