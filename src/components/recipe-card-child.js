@@ -1,4 +1,6 @@
 import React from 'react'
+import Axios from 'axios';
+import UpdateRecipe from './updateRecipe';
 
 class RecipeCardChild extends React.Component {
     constructor(props) {
@@ -11,17 +13,29 @@ class RecipeCardChild extends React.Component {
 
     deleteRecipe(recipeId) {
         if(window.confirm('Are you sure?')) {
-            fetch('http://localhost:8080/api/recipe/' + recipeId , {
-                method: 'DELETE'
-            }).then(response => response.json().then(json => {
-                return json;
-            }))
+        Axios.delete(`http://localhost:8080/api/recipe/` + recipeId, this.state);
         }
+        this.forceUpdate();
     }
 
-    
+    updateRecipeById(id) {
+        // Axios.post(`http://localhost:8080/api/recipe`,
+        // );
+
+        //this will navigate to that url. not through clicks but program navigation
+        this.props.history.push(`/recipes/update/${id}`)
+    }
 
     render() {
+        const renderList = () => {
+            return this.state.recipe.map((recipe) => {
+                //this is where you pass on props to child
+                //onAddToCart={onAddToCart}
+                return <UpdateRecipe recipe = {recipe}/>
+            })
+        }
+
+
         return (
         
        
@@ -39,6 +53,8 @@ class RecipeCardChild extends React.Component {
                                 <a href="#" className="btn btn-primary" >Add to Meal Plan</a>
                                 {/* onClick={this.props.onAddToCart(this.props.recipe)} */}
                                 <button class="btn btn-danger" onClick={()=> this.deleteRecipe(this.props.recipe.id)} variant='danger'>Delete</button>
+                                <button class="btn btn-danger" onClick={()=> this.updateRecipeById(this.props.recipe.id)}>Update</button>
+                              
                             </div>
                     
          

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-class CRUDSearch extends React.Component {
+class UpdateRecipe extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -15,14 +15,27 @@ class CRUDSearch extends React.Component {
                 images: '',
                 category: ''
             },
-            submissionSuccess: false,
+            submissionSuccess: false
         };
 
       
     };
 
-    componentDidMount () {
-        console.log(this.props);
+    componentDidMount() {
+        console.log(this.props.match.params.id)
+        axios.get(`http://localhost:8080/api/recipe/${this.props.match.params.id}`).then(response => {
+            this.setState({
+                formData: {
+                    id: response.data.id,
+                    name: response.data.name,
+                    numberOfIngredients: response.data.numberOfIngredients,
+                    cookTime: response.data.cookTime,
+                    carbs: response.data.carbs,
+                    images: response.data.images,
+                    category: response.data.category
+                }
+            })
+        })
     }
 
     handleSubmit(event) {
@@ -38,9 +51,9 @@ class CRUDSearch extends React.Component {
 
     // fetch item. set state to the values of fetched items. Then pass the id along with post request
 
-    // updateForm(event) {
-    //     axios.post('http://localhost:8080/api/recipe')
-    // }
+    updateForm(event) {
+        axios.post('http://localhost:8080/api/recipe')
+    }
 
 
     render() {
@@ -57,13 +70,14 @@ class CRUDSearch extends React.Component {
                     <div className="col-md-6">
                         
                         <form className="form" onSubmit={this.handleSubmit.bind(this)}>
-                            <h2 className="addTitle">Add A Recipe</h2>
+                            <h2 className="addTitle">Update Existing Recipe</h2>
                             <br />
                             
                             <div class="form-group row">
+
                             <div class="col-sm-10">
                                 <label >Recipe Name:</label>
-                                <input id="name" name="name" type="text" ref="name" value={this.state.formData.name} onChange={event => this.setState({formData: {...this.state.formData, name: event.target.value}})}/>
+                                <input id="name" name="name" type="text" ref="name" value={this.state.formData.name} onChange={event => this.setState({formData: {...this.state.formData, name: event.target.value}})} placeholder="New Recipe Name"/>
                             </div>
                            
                             <div class="col-sm-10">
@@ -83,21 +97,21 @@ class CRUDSearch extends React.Component {
                             
                             <div class="col-sm-10">
                                 <label >Image URL:</label>
-                                <input id="images" name="images" type="text" ref="images" value={this.state.formData.images} onChange={event => this.setState({formData: {...this.state.formData, images: event.target.value}})} />
+                                <input id="images" name="images" type="text" ref="images" value={this.state.formData.images} onChange={event => this.setState({formData: {...this.state.formData, images: event.target.value}})} placeholder="New Image URL" />
                             </div>
                           
                             <div class="col-sm-10">
                                 <label >Category of Recipe:</label>
-                                <input id="category" name="category" type ="text" ref="category" value={this.state.formData.category} onChange={event => this.setState({formData: {...this.state.formData, category: event.target.value}})}/>
+                                <input id="category" name="category" type ="text" ref="category" value={this.state.formData.category} onChange={event => this.setState({formData: {...this.state.formData, category: event.target.value}})} placeholder="New Category"/>
                             </div>
                            
                             <div class="col-sm-10">
-                                <center><button type="submit" class="btn btn-success">Add Recipe</button></center>
+                                <center><button type="submit">Add Recipe</button></center>
                             </div>
                             
                             {/* this whole {} must be true for this section to render.  */}
                             <div class="col-sm-10">
-                                {this.state.submissionSuccess && <div>It's been submitted Successfully!</div>}
+                                {this.state.submissionSuccess && <div>It's been Updated Successfully!</div>}
                             </div>
 
                             </div>
@@ -110,11 +124,11 @@ class CRUDSearch extends React.Component {
 
                     <div className="col-md-6">
                         <center>
-                            <h2 className="h2" >Example Card</h2>
+                            <h2 className="h2" >Updated Card</h2>
                                 <div id="CRUDCard" class="card" style={{width: 285, height: 450}}>
-                                    <img class="card-img-top" src="https://sugarfreelondoner.com/wp-content/uploads/2018/11/Keto-Chocolate-Cake-Gluten-Free.jpg" alt="Chocolate Cake" style={{width: 285, height: 250}} />
+                                    <img class="card-img-top" src={this.state.formData.images} alt="Chocolate Cake" style={{width: 285, height: 250}} />
                                     <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
+                                        <h5 class="card-title">{this.state.formData.name}</h5>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     <a href="#" class="btn btn-primary">Go somewhere</a>
                                 </div>
@@ -127,4 +141,4 @@ class CRUDSearch extends React.Component {
     }
 }
 
-export default CRUDSearch;
+export default UpdateRecipe;

@@ -35,7 +35,6 @@ class NavBar extends React.Component {
                                 </Link>
                             </a>
                         </li>
-
                         </ul>
 
                         <form class="form-inline my-2 my-lg-0">

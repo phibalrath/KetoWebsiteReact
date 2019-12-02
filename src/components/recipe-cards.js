@@ -14,6 +14,7 @@ class Recipe extends React.Component {
     };
 
     async componentDidMount () {
+        console.log(this.props)
         let response = await fetch("http://localhost:8080/api/recipe/all");
         let result = await response.json();
         this.setState({
@@ -75,7 +76,7 @@ class Recipe extends React.Component {
             return this.state.recipe.map((recipe) => {
                 //this is where you pass on props to child
                 //onAddToCart={onAddToCart}
-                return <RecipeCardChild recipe = {recipe}/>
+                return <RecipeCardChild recipe = {recipe} history={this.props.history}/>
             })
         }
 
@@ -127,11 +128,7 @@ class Recipe extends React.Component {
                 recipe: result
             })
         }
-
-        const {selectedOption} = this.state;
-
-
-
+        
         const onSortByCookTime = () => {
             //LOGIC to sort
             let cookTime = this.state.recipe.sort((a, b) => a.cookTime - b.cookTime)

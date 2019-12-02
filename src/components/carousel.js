@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 class Carousel extends React.Component {
 
@@ -53,7 +54,9 @@ class Carousel extends React.Component {
                                 <h1 class="display-4">Be Creative...</h1>
                                 <p class="lead">Just because you're going Keto doesn't mean that you lose your dessert! There's a variety of Keto friendly snacks and desserts available!</p>
                                 <div class="lead">
-                                    <a href="#" className="btn btn-primary">Find Recipes</a>
+                                <Link to="/recipes">
+                                    <button class="btn btn-success" >View Recipes</button>
+                                </Link>
                                 </div>
                                 </div>
                                 </div>
