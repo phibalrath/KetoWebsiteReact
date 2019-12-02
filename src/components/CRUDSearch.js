@@ -16,14 +16,14 @@ class CRUDSearch extends React.Component {
                 images: '',
                 category: ''
             },
-            submissionSuccess: false
+            submissionSuccess: false,
         };
 
       
     };
 
     // async componentDidMount () {
-    //     let response = await fetch("http://localhost:8080/api/recipe/all");
+    //     let response = await fetch("http://lgit ocalhost:8080/api/recipe/all");
     //     let result = await response.json();
     //     this.setState({
     //         recipe: result
@@ -47,6 +47,7 @@ class CRUDSearch extends React.Component {
     updateForm(event) {
         axios.post('http://localhost:8080/api/recipe')
     }
+
 
     render() {
 
@@ -101,8 +102,10 @@ class CRUDSearch extends React.Component {
                             </div>
                             
                             {/* this whole {} must be true for this section to render.  */}
-                            {this.state.submissionSuccess && <div>It's been submitted Successfully!</div>}
-                            
+                            <div class="col-sm-10">
+                                {this.state.submissionSuccess && <div>It's been submitted Successfully!</div>}
+                            </div>
+
                             </div>
                         </form>
                     </div>
@@ -124,6 +127,8 @@ class CRUDSearch extends React.Component {
                             </div>
                          </center>
                     </div>
+
+                    <button className="button" onClick={()=> this.deleteRecipe()} variant='danger'>Delete</button>
 
                 </div>
             

@@ -9,6 +9,7 @@ import Carousel from './components/carousel'
 import HomePage from './components/homepage'
 import CRUDSearch from './components/CRUDSearch';
 
+
 const homePage = () => {
   return (
     <div>
@@ -35,6 +36,7 @@ const addRecipe = () => {
     </div>
   )
 }
+
 
 function App() {
   return (

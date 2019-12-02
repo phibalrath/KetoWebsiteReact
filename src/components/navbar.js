@@ -9,7 +9,9 @@ class NavBar extends React.Component {
             <div>
                 <nav class="navbar navbar-expand-lg" >
                     <a class="navbar-brand">
-                        <Link to="/">KETO Planner</Link>
+                        <Link to="/">
+                            <div id="whiteLabel">KETO Planner</div>
+                        </Link>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -20,13 +22,17 @@ class NavBar extends React.Component {
                      
                         <li class="nav-item">
                             <a class="nav-link">
-                                <Link to="/recipes">Recipes</Link>
+                                <Link to="/recipes">
+                                    <div id="whiteLabel">Recipe</div>
+                                </Link>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link">
-                                <Link to="/recipes/add">Add Recipe</Link>
+                                <Link to="/recipes/add">
+                                    <div id="whiteLabel">Add Recipe</div>
+                                </Link>
                             </a>
                         </li>
 

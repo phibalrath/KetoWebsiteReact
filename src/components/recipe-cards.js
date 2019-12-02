@@ -230,12 +230,12 @@ class Recipe extends React.Component {
                     </div>
                     <div className="col-md-9">
                     Sort By:
-                     <button onClick={onSortByCookTime}>CookTime: Low to High</button>
-                     <button onClick={onSortByCookTimeHigh}>CookTime: High to Low</button>
-                     <button onClick={onSortByNumOfIngredients}># of Ingredients: Low to High</button>
-                     <button onClick={onSortByNumOfIngredientsHigh}># of Ingredients: High to Low</button>
-                     <button onClick={onSortByNumOfCarbs}># of Carbs: Low to High</button>
-                     <button onClick={onSortByNumOfCarbsHigh}># of Carbs: High to Low</button>
+                     <button onClick={onSortByCookTime} class="btn btn-outline-success" >CookTime: Low to High</button>
+                     <button onClick={onSortByCookTimeHigh} class="btn btn-outline-success">CookTime: High to Low</button>
+                     <button onClick={onSortByNumOfIngredients} class="btn btn-outline-success"># of Ingredients: Low to High</button>
+                     <button onClick={onSortByNumOfIngredientsHigh} class="btn btn-outline-success"># of Ingredients: High to Low</button>
+                     <button onClick={onSortByNumOfCarbs} class="btn btn-outline-success"># of Carbs: Low to High</button>
+                     <button onClick={onSortByNumOfCarbsHigh} class="btn btn-outline-success"># of Carbs: High to Low</button>
                      
                         
                         <div className="row">

@@ -10,7 +10,9 @@ class HomePage extends React.Component {
                     <img src="https://cdn.ruled.me/wp-content/uploads/2013/10/keto-bacon-and-eggs-featured.jpg" alt="Bacon&Eggs" class="imageOne" />
                     <div className="middle">
                         <div className="text">
-                            <Link to="/recipes">Breakfast</Link>
+                            <Link to="/recipes">
+                                <div id="whiteLabel">Breakfast</div>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -19,7 +21,9 @@ class HomePage extends React.Component {
                     <img src="http://thehealthygrub.com/wp-content/uploads/2017/06/Keto-Lunch.jpg" alt="Chicken&Acavados" class="imageOne" />
                         <div className="middle">
                             <div className="text">
-                                <Link to="/recipes">Lunch</Link>
+                                <Link to="/recipes">
+                                    <div id="whiteLabel">Lunch</div>
+                                </Link>
                                 </div>
                         </div>
                 </div>
@@ -28,7 +32,9 @@ class HomePage extends React.Component {
                     <img src="https://ketocookingchristian.com/wp-content/uploads/2019/05/Jalapeno-Popper-Cauliflower-Mac-and-Cheese.jpg" alt="Cauliflower Mac&Cheese" class="imageOne"/>
                          <div className="middle">
                             <div className="text">
-                                <Link to="/recipes">Dinner</Link>
+                                <Link to="/recipes">
+                                    <div id="whiteLabel">Dinner</div>
+                                </Link>
                             </div>
                          </div>
                 </div>

@@ -29,9 +29,7 @@
   background-color: #3CB371;
 }
 
-.nav-link, .navbar-brand {
-  color: white;
-}
+
 
 #jumboImageOne {
   background-image: url("https://qph.fs.quoracdn.net/main-qimg-5a75652cef28cfa6a6e85458c91a05f7");
@@ -79,6 +77,19 @@
   backface-visibility: hidden;
   border-radius: 50%;
   padding: .5em;
+}
+
+#centerRight {
+  background-color: #3d5c5c;
+}
+
+#backgroundCenter {
+  background-color: #3d5c5c;
+  margin-top: 25%;
+}
+
+.navbar-brand a, .nav-link a{
+  color: rgb(109, 107, 107);
 }
 
 .row {
@@ -160,6 +171,10 @@ label {
   margin-top: 13%;
 }
 
+#whiteLabel {
+  color: white;
+}
+
 @media screen and (max-width: 780px) {
   /* Green Line disappears if smaller than 780px */
   .verticalLine {
@@ -170,6 +185,14 @@ label {
     margin: 2em;
   }
 }
+
+
+
+
+
+
+
+
 
 
 

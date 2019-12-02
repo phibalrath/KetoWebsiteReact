@@ -36,7 +36,7 @@ class Carousel extends React.Component {
                                         <div class="col-md-8">
 
                                         </div>
-                                        <div id="center-right" class="col-md-4">
+                                        <div id="centerRight" class="col-md-4">
                                              <h1 class="display-4">Why Keto?</h1>
                                              <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
                                         </div>
@@ -47,9 +47,9 @@ class Carousel extends React.Component {
                     
                         <div class="carousel-item">
                             <div id="jumboImageThree" class="jumbotron jumbotron-fluid">
-                                <div class="container">
+                                <div class="container" id="background">
                                     <div id="center" class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12" id="backgroundCenter">
                                 <h1 class="display-4">Be Creative...</h1>
                                 <p class="lead">Just because you're going Keto doesn't mean that you lose your dessert! There's a variety of Keto friendly snacks and desserts available!</p>
                                 <div class="lead">
