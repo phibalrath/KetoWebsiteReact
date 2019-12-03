@@ -1,5 +1,7 @@
 import React from 'react';
 import RecipeCardChild from './recipe-card-child'
+import Dropdown from 'react-dropdown-select'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 
 class Recipe extends React.Component {
@@ -9,7 +11,7 @@ class Recipe extends React.Component {
             error: null,
             recipe: [],
             isLoaded: false,
-          
+            suggestions: []
         }
     };
 
@@ -20,53 +22,33 @@ class Recipe extends React.Component {
         this.setState({
             recipe: result
         })
-        console.log(this.state.recipe)
     }
 
-
-    // componentDidMount() {
-    //     console.log("did mount")
-    //     fetch("http://localhost:8080/api/recipe/all")
-    //     .then(response => {
-    //         response.json();
-    //         console.log(response)
-    //     })
-    //     .then(
-    //         (result) => {
-    //             console.log(result)
-    // //             this.setState({
-    // //                 isLoaded: true,
-    // //                 recipe: result
-    // //             });
-    //         }),
-    // //         //Handle errors
-    // //         (error) => {
-    // //             this.setState({
-    // //                 isLoaded: true,
-    // //                 error
-    // //             });
-    // //         }
-    // //     )
-    // }
-
-    // sortBy(key) {
-    //     this.setState({
-    //         recipe: recipe.sort((a,b) => a > b )
-    //     })
-    // }
-
-    // handleChange(event) {
-    //     this.setState({recipe: event.target.recipe});
-    //   };
-
-    //   handleSubmit(event) {
-    //     alert(this.state.recipe);
-    //     event.preventDefault();
-    //   };
-
-    // onAddToCart(recipe) {
-    //     this.setState()
-    // }
+    onTextChanged = () => {
+        var input = document.getElementById('searchbar').value
+        input = input.toLowerCase();
+        console.log(input);
+        
+        if(input.length === 0) {
+            return this.state.recipe;
+        }
+        if (input.length > 0) {
+            const regex = new RegExp(`^${input}`);
+            console.log(regex)
+            var suggestions = [];
+            suggestions = this.state.recipe.sort().filter(v => {
+                console.log(v.name)
+                // regex.test(v.name)
+                return v.name.includes(input);
+            
+            });
+            console.log(suggestions)
+        }
+        this.setState({
+            recipe: suggestions
+        }) 
+        
+    } 
   
     render() {
 
@@ -80,6 +62,12 @@ class Recipe extends React.Component {
             })
         }
 
+        const renderSuggestions = () => {
+            return this.state.suggestions.map((recipe) => {
+                return <RecipeCardChild recipe = {recipe} history={this.props.history}/>
+            })
+        }
+
         const onAllFilter = async () => {
             let response = await fetch("http://localhost:8080/api/recipe/all");
             let result = await response.json();
@@ -87,10 +75,10 @@ class Recipe extends React.Component {
                 recipe: result
             })
         }
-
+        
         //Change State to Dinner and automatically re-render component
         const onDinnerFilter = async () => {
-            let response = await fetch("http://localhost:8080/api/recipe/all/dinner");
+            let response = await fetch(`http://localhost:8080/api/recipe/all/dinner`);
             let result = await response.json();
             this.setState({
                 recipe: result
@@ -183,6 +171,49 @@ class Recipe extends React.Component {
             })
         }
 
+    //    const onSearchRecipeByName = () => {
+    //        var input = document.getElementById('searchbar').value
+           
+    //        input = input.toLowerCase();
+    //        var x = this.state.recipe;
+           
+        //    for(let i = 0; i < x.length; i++) {
+        //        if(!x[i].innerHTML.toLowerCase().includes(input)) {
+        //            x[i].style.display = "none";
+        //        } else {  
+        //            x[i].style.display="recipe-cards";
+        //        }
+        //    }
+    //     var resArray = [];
+    //        for(let i=0; i<x.length; i++) {
+    //         console.log(x[i].name)
+    //         console.log(input)
+    //             if (x[i].name.includes(input, 0)) {
+                    
+    //                 resArray.push(x[i]);
+    //             }
+    //        }
+    //        console.log(resArray)
+    //        this.setState({searchResult: resArray})
+    //        console.log(this.state.searchResult)
+    //    }
+
+
+    // const onSearchRecipeByName = (e) => {
+    //     let currentList = this.state.recipe;
+    //     let newList = [];
+
+    //     newList = currentList.filter(item => {
+    //         const filter = e.target.value.toLowerCase();
+    //         return filter;
+    //     });
+
+    //     this.setState({
+    //         recipe: newList
+    //     })
+    // }
+
+
         
 
         return(<div>
@@ -226,14 +257,27 @@ class Recipe extends React.Component {
 
                     </div>
                     <div className="col-md-9">
-                    Sort By:
-                     <button onClick={onSortByCookTime} class="btn btn-outline-success" >CookTime: Low to High</button>
-                     <button onClick={onSortByCookTimeHigh} class="btn btn-outline-success">CookTime: High to Low</button>
-                     <button onClick={onSortByNumOfIngredients} class="btn btn-outline-success"># of Ingredients: Low to High</button>
-                     <button onClick={onSortByNumOfIngredientsHigh} class="btn btn-outline-success"># of Ingredients: High to Low</button>
-                     <button onClick={onSortByNumOfCarbs} class="btn btn-outline-success"># of Carbs: Low to High</button>
-                     <button onClick={onSortByNumOfCarbsHigh} class="btn btn-outline-success"># of Carbs: High to Low</button>
+                        <div className = "row" id="searchRow">
+                            <input id="searchbar" type="text" name="search" placeholder="Search Recipes..." />
+                                <button class= "btn btn-success" onClick={this.onTextChanged}>Search</button>
+                                {/* {renderSuggestions()} */}
+                        
+        
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sort By:
+                        </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button onClick={onSortByCookTime} class="dropdown-item" type="button">CookTime: Low to High</button>
+                                <button onClick={onSortByCookTimeHigh} class="dropdown-item" type="button">CookTime: High to Low</button>
+                                <button onClick={onSortByNumOfIngredients} class="dropdown-item"># of Ingredients: Low to High</button>
+                                <button onClick={onSortByNumOfIngredientsHigh} class="dropdown-item"># of Ingredients: High to Low</button>
+                                <button onClick={onSortByNumOfCarbs} class="dropdown-item"># of Carbs: Low to High</button>
+                                <button onClick={onSortByNumOfCarbsHigh} class="dropdown-item"># of Carbs: High to Low</button>
                      
+                            </div>
+                    </div>
+                    </div>
                         
                         <div className="row">
                             {renderList()}

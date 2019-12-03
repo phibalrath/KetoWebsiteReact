@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class UpdateRecipe extends React.Component {
     constructor() {
@@ -106,7 +107,7 @@ class UpdateRecipe extends React.Component {
                             </div>
                            
                             <div class="col-sm-10">
-                                <center><button type="submit">Add Recipe</button></center>
+                                <center><button type="submit" class="btn btn-success">Save Changes</button></center>
                             </div>
                             
                             {/* this whole {} must be true for this section to render.  */}
@@ -116,6 +117,10 @@ class UpdateRecipe extends React.Component {
 
                             </div>
                         </form>
+                        
+                        <Link to="/recipes">
+                            <button class="btn btn-primary" id="backButton">Back to Recipes</button>
+                        </Link>
                     </div>
 
                     <div className="verticalLine">
@@ -129,8 +134,11 @@ class UpdateRecipe extends React.Component {
                                     <img class="card-img-top" src={this.state.formData.images} alt="Chocolate Cake" style={{width: 285, height: 250}} />
                                     <div class="card-body">
                                         <h5 class="card-title">{this.state.formData.name}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <p class="card-text">
+                                        {this.state.formData.numberOfIngredients} Ingredients|
+                                        {this.state.formData.cookTime} Minutes |
+                                        {this.state.formData.carbs} Carbs
+                                    </p>
                                 </div>
                             </div>
                          </center>

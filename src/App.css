@@ -182,6 +182,22 @@ footer {
   background-color: #4CAF50;
 }
 
+#backButton {
+  float: left;
+  margin-top: 3em;
+}
+
+.show>.dropdown-menu {
+  display: block;
+  position: absolute;
+}
+
+#searchRow {
+  margin-top: 1em;
+  margin-left: .1em;
+  float: left;
+}
+
 @media screen and (max-width: 780px) {
   /* Green Line disappears if smaller than 780px */
   .verticalLine {

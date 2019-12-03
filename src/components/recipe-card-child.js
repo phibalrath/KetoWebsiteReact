@@ -52,8 +52,9 @@ class RecipeCardChild extends React.Component {
                              <br />
                                 <a href="#" className="btn btn-primary" >Add to Meal Plan</a>
                                 {/* onClick={this.props.onAddToCart(this.props.recipe)} */}
+                                <button class="btn btn-success" onClick={()=> this.updateRecipeById(this.props.recipe.id)}>Update</button>
                                 <button class="btn btn-danger" onClick={()=> this.deleteRecipe(this.props.recipe.id)} variant='danger'>Delete</button>
-                                <button class="btn btn-danger" onClick={()=> this.updateRecipeById(this.props.recipe.id)}>Update</button>
+                                
                               
                             </div>
                     
